@@ -11,12 +11,6 @@
           <img :src="imgLogo" alt="" />
         </div>
       </a>
-
-      <a
-        href="https://www.creative-tim.com/product/vue-material-dashboard"
-        target="_blank"
-        class="simple-text logo-normal"
-      >
         {{ title }}
       </a>
     </div>
@@ -47,7 +41,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "Vue MD",
+      default: "Miramichi Pool",
     },
     sidebarBackgroundImage: {
       type: String,

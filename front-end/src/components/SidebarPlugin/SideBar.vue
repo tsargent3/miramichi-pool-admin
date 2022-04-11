@@ -12,7 +12,6 @@
         </div>
       </a>
         {{ title }}
-      </a>
     </div>
     <div class="sidebar-wrapper">
       <slot name="content"></slot>

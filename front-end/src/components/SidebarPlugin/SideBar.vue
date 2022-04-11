@@ -57,7 +57,7 @@ export default {
     },
     sidebarItemColor: {
       type: String,
-      default: "green",
+      default: "blue",
       validator: (value) => {
         let acceptedValues = ["", "purple", "blue", "green", "orange", "red"];
         return acceptedValues.indexOf(value) !== -1;

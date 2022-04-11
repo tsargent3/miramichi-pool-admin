@@ -12,12 +12,12 @@
         </div>
       </a>
 
-      <span
+      <a
         href="#/dashboard/"
         class="simple-text logo-normal"
       >
         {{ title }}
-      </span>
+      </a>
     </div>
     <div class="sidebar-wrapper">
       <slot name="content"></slot>

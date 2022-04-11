@@ -45,7 +45,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "Vue MD",
+      default: "Miramichi Pool",
     },
     sidebarBackgroundImage: {
       type: String,

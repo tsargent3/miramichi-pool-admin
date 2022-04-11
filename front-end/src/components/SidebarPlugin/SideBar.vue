@@ -11,7 +11,12 @@
           <img :src="imgLogo" alt="" />
         </div>
       </a>
+
+      <span
+        class="simple-text logo-normal"
+      >
         {{ title }}
+      </span>
     </div>
     <div class="sidebar-wrapper">
       <slot name="content"></slot>
@@ -40,7 +45,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "Miramichi Pool",
+      default: "Vue MD",
     },
     sidebarBackgroundImage: {
       type: String,

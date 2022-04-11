@@ -47,10 +47,6 @@ export default {
       type: String,
       default: "Miramichi Pool",
     },
-    sidebarBackgroundImage: {
-      type: String,
-      default: require("@/assets/img/sidebar-2.jpg"),
-    },
     imgLogo: {
       type: String,
       default: require("@/assets/img/miramichipool.png"),
@@ -76,13 +72,6 @@ export default {
     return {
       autoClose: this.autoClose,
     };
-  },
-  computed: {
-    sidebarStyle() {
-      return {
-        backgroundImage: `url(${this.sidebarBackgroundImage})`,
-      };
-    },
   },
 };
 </script>

@@ -4,7 +4,6 @@
 
     <side-bar
       :sidebar-item-color="sidebarBackground"
-      :sidebar-background-image="sidebarBackgroundImage"
     >
       <mobile-menu slot="content"></mobile-menu>
       <sidebar-link to="/dashboard">
@@ -28,12 +27,6 @@
     <div class="main-panel">
       <top-navbar></top-navbar>
 
-      <fixed-plugin
-        :color.sync="sidebarBackground"
-        :image.sync="sidebarBackgroundImage"
-      >
-      </fixed-plugin>
-
       <dashboard-content> </dashboard-content>
     </div>
   </div>
@@ -43,19 +36,16 @@
 import TopNavbar from "./TopNavbar.vue";
 import DashboardContent from "./Content.vue";
 import MobileMenu from "@/pages/Layout/MobileMenu.vue";
-import FixedPlugin from "./Extra/FixedPlugin.vue";
 
 export default {
   components: {
     TopNavbar,
     DashboardContent,
     MobileMenu,
-    FixedPlugin,
   },
   data() {
     return {
       sidebarBackground: "blue",
-      sidebarBackgroundImage: require("@/assets/img/sidebar-2.jpg"),
     };
   },
 };

@@ -1,0 +1,24 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "Back-end for Miramichi Pool Admin tool",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/tsargent3/miramichi-pool-admin.git"
+  },
+  "author": "Tyler Sargent",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tsargent3/miramichi-pool-admin/issues"
+  },
+  "homepage": "https://github.com/tsargent3/miramichi-pool-admin#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.10"
+  }
+}

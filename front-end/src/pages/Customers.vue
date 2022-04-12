@@ -11,34 +11,25 @@
             <md-button>New Customer</md-button>
           </md-card-actions>
           <md-card-content id="customer-list">
-            <md-card class="customer">
-              <md-card-content>
-                <div class="md-title">
-                  John Doe
-                </div>
-                <div class="md-subhead">
-                  Last Update: Apr 7, 2022 @ 12:35PM
-                </div>
-              </md-card-content>
-              <md-card-actions layout="row" md-alignment="space-between">
-                <md-button>Open</md-button>
-                <md-button>Delete</md-button>
-              </md-card-actions>
-            </md-card>
-            <md-card class="customer">
-              <md-card-content>
-                <div class="md-title">
-                  Jane Doe
-                </div>
-                <div class="md-subhead">
-                  Last Update: Apr 11, 2022 @ 9:47AM
-                </div>
-              </md-card-content>
-              <md-card-actions layout="row" md-alignment="space-between">
-                <md-button>Open</md-button>
-                <md-button>Delete</md-button>
-              </md-card-actions>
-            </md-card>
+            <div class="md-layout">
+              <md-card class="customer md-layout-item md-small-size-45 md-medium-size-45 md-large-size-45 md-size-45" v-for="(customer,index) in customers" :key="index">
+                <md-card-content>
+                  <div class="md-title">
+                    {{customer.name}}
+                  </div>
+                  <div class="status" >
+                    <span :class="customer.status.replace(' ', '-').toLowerCase()" >{{customer.status}}</span>
+                  </div>
+                  <div class="md-subhead">
+                    Last update to customer made on {{customer.lastUpdate}}
+                  </div>
+                </md-card-content>
+                <md-card-actions layout="row" md-alignment="space-between">
+                  <md-button>Open</md-button>
+                  <md-button data-background-color="red">Delete</md-button>
+                </md-card-actions>
+              </md-card>
+            </div>
           </md-card-content>
         </md-card>
       </div>
@@ -49,14 +40,47 @@
 <style lang="scss" scoped>
   #new-customer{
     margin-top:10px;
-    margin-bottom:0px;
+    margin-bottom:10px;
+    padding:0;
+    border-top:0;
+  }
+
+  div.md-layout{
+    display:flex;
+    justify-content: space-between;
   }
 
   #customer-list{
     margin-top:-20px;
+    display: inline-block;
   }
-  .customer {
-    margin-bottom: 5px;
+  .md-card .customer {
+    margin: 10px auto;
+  }
+  .status{
+    margin:5px;
+    text-align: left;
+    font-weight: 500;
+    .good{
+      padding:5px;
+      border-radius:5px;
+      background-color: lawngreen !important;
+    }
+    .upset{
+      padding:5px;
+      border-radius:5px;
+      background-color: indianred !important;
+    }
+    .waiting{
+      padding:5px;
+      border-radius:5px;
+      background-color: mediumspringgreen !important;
+    }
+    .in-progress{
+      padding:5px;
+      border-radius:5px;
+      background-color: dodgerblue !important;
+    }
   }
 </style>
 
@@ -67,6 +91,18 @@ export default {
       type: String,
       default: "",
     },
+  },
+  data() {
+    return {
+      customers: [
+        {name: "John Doe", status:"WAITING", lastUpdate:"Apr 11 @ 4:25 PM"},
+        {name: "Jane Doe", status:"GOOD", lastUpdate:"Apr 6 @ 4:15 PM"},
+        {name: "Ben Jerry", status:"IN PROGRESS", lastUpdate:"Apr 2 @ 10:25 AM"},
+        {name: "Sue Loo", status:"UPSET", lastUpdate:"Apr 12 @ 11:25 AM"},
+        {name: "Billy Joe", status:"GOOD", lastUpdate:"Apr 1 @ 1:02 PM"},
+        {name: "Jimmy Jean", status:"WAITING", lastUpdate:"Mar 4 @ 2:21 PM"},
+      ],
+    };
   },
 };
 </script>

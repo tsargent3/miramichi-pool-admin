@@ -19,8 +19,8 @@
           <div class="md-autocomplete">
             <md-autocomplete
               class="search"
-              v-model="selectedEmployee"
-              :md-options="employees"
+              v-model="selectedCustomer"
+              :md-options="customers"
             >
               <label>Search...</label>
             </md-autocomplete>
@@ -91,16 +91,14 @@
 export default {
   data() {
     return {
-      selectedEmployee: null,
-      employees: [
-        "Jim Halpert",
-        "Dwight Schrute",
-        "Michael Scott",
-        "Pam Beesly",
-        "Angela Martin",
-        "Kelly Kapoor",
-        "Ryan Howard",
-        "Kevin Malone",
+      selectedCustomer: null,
+      customers: [
+        "John Doe",
+        "Jane Doe",
+        "Ben Jerry",
+        "Sue Loo",
+        "Billy Joe",
+        "Jimmy Jean",
       ],
     };
   },

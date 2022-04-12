@@ -19,7 +19,7 @@ export default {
   props: {
     dataBackgroundColor: {
       type: String,
-      default: "",
+      default: "blue",
     },
   },
 };

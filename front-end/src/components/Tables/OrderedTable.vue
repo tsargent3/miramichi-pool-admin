@@ -1,16 +1,45 @@
 <template>
   <div>
-    <md-table v-model="users" :table-header-color="tableHeaderColor">
-      <md-table-row slot="md-table-row" slot-scope="{ item }">
-        <md-table-cell md-label="ID">{{ item.id }}</md-table-cell>
-        <md-table-cell md-label="Name">{{ item.name }}</md-table-cell>
-        <md-table-cell md-label="Salary">{{ item.salary }}</md-table-cell>
-        <md-table-cell md-label="Country">{{ item.country }}</md-table-cell>
-        <md-table-cell md-label="City">{{ item.city }}</md-table-cell>
+    <md-table :table-header-color="tableHeaderColor">
+      <md-table-row v-for="(customer,index) in customers" :key="index">
+        <md-table-cell md-label="Name">{{ customer.name }}</md-table-cell>
+        <md-table-cell md-label="Last Update">{{ customer.lastUpdate }}</md-table-cell>
+        <md-table-cell md-label="Status" class="status" ><span :class="customer.status.replace(' ','-').toLowerCase()" >{{customer.status}}</span></md-table-cell>
       </md-table-row>
     </md-table>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  .status{
+    margin:5px;
+    font-weight: 500;
+    .good{
+      padding:5px;
+      border-radius:5px;
+      background-color: lawngreen !important;
+      margin: 0 auto;
+    }
+    .upset{
+      padding:5px;
+      border-radius:5px;
+      background-color: indianred !important;
+      margin: 0 auto;
+    }
+    .waiting{
+      padding:5px;
+      border-radius:5px;
+      background-color: mediumspringgreen !important;
+      margin: 0 auto;
+    }
+    .in-progress{
+      padding:5px;
+      border-radius:5px;
+      background-color: dodgerblue !important;
+      margin: 0 auto;
+    }
+  }
+</style>
 
 <script>
 export default {
@@ -23,36 +52,13 @@ export default {
   },
   data() {
     return {
-      selected: [],
-      users: [
-        {
-          id: 1,
-          name: "Dakota Rice",
-          salary: "$36,738",
-          country: "Niger",
-          city: "Oud-Turnhout",
-        },
-        {
-          id: 2,
-          name: "Minerva Hooper",
-          salary: "$23,738",
-          country: "Curaçao",
-          city: "Sinaai-Waas",
-        },
-        {
-          id: 3,
-          name: "Sage Rodriguez",
-          salary: "$56,142",
-          country: "Netherlands",
-          city: "Overland Park",
-        },
-        {
-          id: 4,
-          name: "Philip Chaney",
-          salary: "$38,735",
-          country: "Korea, South",
-          city: "Gloucester",
-        },
+      customers: [
+        {name: "John Doe", status:"WAITING", lastUpdate:"Apr 11 @ 4:25 PM"},
+        {name: "Jane Doe", status:"GOOD", lastUpdate:"Apr 6 @ 4:15 PM"},
+        {name: "Ben Jerry", status:"IN PROGRESS", lastUpdate:"Apr 2 @ 10:25 AM"},
+        {name: "Sue Loo", status:"UPSET", lastUpdate:"Apr 12 @ 11:25 AM"},
+        {name: "Billy Joe", status:"GOOD", lastUpdate:"Apr 1 @ 1:02 PM"},
+        {name: "Jimmy Jean", status:"WAITING", lastUpdate:"Mar 4 @ 2:21 PM"},
       ],
     };
   },

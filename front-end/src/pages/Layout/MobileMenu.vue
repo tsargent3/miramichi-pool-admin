@@ -6,12 +6,7 @@
         <md-input v-model="search" type="text"></md-input>
       </md-field>
     </li>
-    <li>
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <i class="material-icons">dashboard</i>
-        <p>Dashboard</p></a
-      >
-    </li>
+
     <li>
       <drop-down>
         <a slot="title" class="dropdown-toggle" data-toggle="dropdown">
@@ -27,12 +22,6 @@
           <li><a href="#">Another One</a></li>
         </ul>
       </drop-down>
-    </li>
-    <li>
-      <a href="#" data-toggle="dropdown" class="dropdown-toggle"
-        ><i class="material-icons">person</i>
-        <p>Profile</p></a
-      >
     </li>
   </ul>
 </template>
@@ -53,6 +42,15 @@ export default {
         "Kevin Malone",
       ],
     };
+  },methods: {
+    hideSidebar() {
+      if (
+              this.$sidebar &&
+              this.$sidebar.showSidebar === true
+      ) {
+        this.$sidebar.displaySidebar(false);
+      }
+    },
   },
 };
 </script>

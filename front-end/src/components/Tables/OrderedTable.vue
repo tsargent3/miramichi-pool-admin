@@ -13,7 +13,8 @@
 <style lang="scss" scoped>
   .status{
     margin:5px;
-    font-weight: 500;
+    font-weight: 600;
+    white-space: nowrap;
     .good{
       padding:5px;
       border-radius:5px;

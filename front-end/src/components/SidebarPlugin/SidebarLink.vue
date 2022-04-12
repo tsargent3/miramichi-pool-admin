@@ -5,7 +5,7 @@
       @click="hideSidebar"
       v-bind="$attrs"
     >
-      <div class="md-list-item-content md-ripple">
+      <div class="md-list-item-content md-ripple" @click="hideSidebar">
         <slot>
           <md-icon>{{ link.icon }}</md-icon>
           <p>{{ link.name }}</p>

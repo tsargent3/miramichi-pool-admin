@@ -12,7 +12,7 @@
           </md-card-actions>
           <md-card-content id="customer-list">
             <div class="md-layout">
-              <md-card class="customer md-layout-item md-small-size-45 md-medium-size-45 md-large-size-45 md-size-45" v-for="(customer,index) in customers" :key="index">
+              <md-card class="customer md-layout-item md-xsmall-size-100 md-small-size-45 md-medium-size-45 md-large-size-45 md-size-45" v-for="(customer,index) in customers" :key="index">
                 <md-card-content>
                   <div class="md-title">
                     {{customer.name}}

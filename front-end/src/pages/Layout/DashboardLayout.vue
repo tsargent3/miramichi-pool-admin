@@ -11,7 +11,7 @@
         <p>Dashboard</p>
       </sidebar-link>
       <sidebar-link to="/customers">
-        <md-icon>library_books</md-icon>
+        <md-icon>groups</md-icon>
         <p>Customers</p>
       </sidebar-link>
       <sidebar-link to="/user">

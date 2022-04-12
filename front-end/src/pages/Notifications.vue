@@ -3,7 +3,7 @@
     <div class="md-layout">
       <div class="md-layout-item">
         <md-card>
-          <md-card-header data-background-color="green">
+          <md-card-header data-background-color="blue">
             <h4 class="title">Notifications</h4>
             <p class="category">
               Handcrafted by us with <i class="fa fa-heart heart"></i>

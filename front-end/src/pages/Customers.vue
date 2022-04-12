@@ -4,132 +4,61 @@
       <div class="md-layout-item">
         <md-card>
           <md-card-header data-background-color="blue">
-            <h4 class="title">Material Dashboard Heading</h4>
-            <p class="category">Created using Roboto Font Family</p>
+            <h4 class="title">Customer List</h4>
+            <p class="category">Select a customer from the list below, or add a new customer to the system.</p>
           </md-card-header>
-          <md-card-content>
-            <div id="typography">
-              <div class="title">
-                <h2>Typography</h2>
-              </div>
-              <div class="row">
-                <div class="tim-typo">
-                  <h1>
-                    <span class="tim-note">Header 1</span>The Life of Material
-                    Dashboard
-                  </h1>
+          <md-card-actions id="new-customer" md-alignment="right">
+            <md-button>New Customer</md-button>
+          </md-card-actions>
+          <md-card-content id="customer-list">
+            <md-card class="customer">
+              <md-card-content>
+                <div class="md-title">
+                  John Doe
                 </div>
-                <div class="tim-typo">
-                  <h2>
-                    <span class="tim-note">Header 2</span>The life of Material
-                    Dashboard
-                  </h2>
+                <div class="md-subhead">
+                  Last Update: Apr 7, 2022 @ 12:35PM
                 </div>
-                <div class="tim-typo">
-                  <h3>
-                    <span class="tim-note">Header 3</span>The life of Material
-                    Dashboard
-                  </h3>
+              </md-card-content>
+              <md-card-actions layout="row" md-alignment="space-between">
+                <md-button>Open</md-button>
+                <md-button>Delete</md-button>
+              </md-card-actions>
+            </md-card>
+            <md-card class="customer">
+              <md-card-content>
+                <div class="md-title">
+                  Jane Doe
                 </div>
-                <div class="tim-typo">
-                  <h4>
-                    <span class="tim-note">Header 4</span>The life of Material
-                    Dashboard
-                  </h4>
+                <div class="md-subhead">
+                  Last Update: Apr 11, 2022 @ 9:47AM
                 </div>
-                <div class="tim-typo">
-                  <h5>
-                    <span class="tim-note">Header 5</span>The life of Material
-                    Dashboard
-                  </h5>
-                </div>
-                <div class="tim-typo">
-                  <h6>
-                    <span class="tim-note">Header 6</span>The life of Material
-                    Dashboard
-                  </h6>
-                </div>
-                <div class="tim-typo">
-                  <p>
-                    <span class="tim-note">Paragraph</span>
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers. I understand
-                    culture. I am the nucleus. I think that’s a responsibility
-                    that I have, to push possibilities, to show people, this is
-                    the level that things could be at.
-                  </p>
-                </div>
-                <div class="tim-typo">
-                  <span class="tim-note">Quote</span>
-                  <blockquote>
-                    <p>
-                      I will be the leader of a company that ends up being worth
-                      billions of dollars, because I got the answers. I
-                      understand culture. I am the nucleus. I think that’s a
-                      responsibility that I have, to push possibilities, to show
-                      people, this is the level that things could be at.
-                    </p>
-                    <small> Kanye West, Musician </small>
-                  </blockquote>
-                </div>
-                <div class="tim-typo">
-                  <span class="tim-note">Muted Text</span>
-                  <p class="text-muted">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div class="tim-typo">
-                  <span class="tim-note">Primary Text</span>
-                  <p class="text-primary">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div class="tim-typo">
-                  <span class="tim-note">Info Text</span>
-                  <p class="text-info">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div class="tim-typo">
-                  <span class="tim-note">Success Text</span>
-                  <p class="text-success">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div class="tim-typo">
-                  <span class="tim-note">Warning Text</span>
-                  <p class="text-warning">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div class="tim-typo">
-                  <span class="tim-note">Danger Text</span>
-                  <p class="text-danger">
-                    I will be the leader of a company that ends up being worth
-                    billions of dollars, because I got the answers...
-                  </p>
-                </div>
-                <div class="tim-typo">
-                  <h2>
-                    <span class="tim-note">Small Tag</span>
-                    Header with small subtitle
-                    <br />
-                    <small>Use "small" tag for the headers</small>
-                  </h2>
-                </div>
-              </div>
-            </div>
+              </md-card-content>
+              <md-card-actions layout="row" md-alignment="space-between">
+                <md-button>Open</md-button>
+                <md-button>Delete</md-button>
+              </md-card-actions>
+            </md-card>
           </md-card-content>
         </md-card>
       </div>
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+  #new-customer{
+    margin-top:10px;
+    margin-bottom:0px;
+  }
+
+  #customer-list{
+    margin-top:-20px;
+  }
+  .customer {
+    margin-bottom: 5px;
+  }
+</style>
 
 <script>
 export default {

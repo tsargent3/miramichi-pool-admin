@@ -123,6 +123,7 @@
   .panel{
     padding:5px;
     padding-top:10px;
+    margin: 10px 0;
     .panel-content{
       overflow-y: scroll;
       height: 300px;
@@ -131,7 +132,6 @@
 
   .log-message{
     padding: 5px;
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.44);
     margin: 10px 0;
   }
 
@@ -167,14 +167,14 @@ export default {
         {id: 6, name: "Jimmy Jean", phone: "506-310-3030", address: "42 Wallaby Way, Sydney", status:"WAITING", lastUpdate:"Mar 4 @ 2:21 PM"},
       ],
       conversationLogs: [
-          {id: 1, customer_id: 1, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur feugiat justo. Sed bibendum pretium ligula. Quisque hendrerit pretium lobortis. Nunc erat enim, ultrices et ipsum vitae, semper volutpat magna.", important: false, timeStamp: new Date()},
+          {id: 1, customer_id: 1, message: "Morbi vitae quam tincidunt, eleifend diam vitae, commodo metus. Maecenas turpis enim, lacinia porta malesuada eget, sodales non libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur feugiat justo. Sed bibendum pretium ligula. Quisque hendrerit pretium lobortis. Nunc erat enim, ultrices et ipsum vitae, semper volutpat magna.", important: false, timeStamp: new Date()},
           {id: 1, customer_id: 1, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur feugiat justo. Sed bibendum pretium ligula. Quisque hendrerit pretium lobortis. Nunc erat enim, ultrices et ipsum vitae, semper volutpat magna.", important: true, timeStamp: new Date()},
           {id: 1, customer_id: 1, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur feugiat justo. Sed bibendum pretium ligula. Quisque hendrerit pretium lobortis. Nunc erat enim, ultrices et ipsum vitae, semper volutpat magna.", important: false, timeStamp: new Date()},
           {id: 1, customer_id: 5, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur feugiat justo. Sed bibendum pretium ligula. Quisque hendrerit pretium lobortis. Nunc erat enim, ultrices et ipsum vitae, semper volutpat magna.", important: true, timeStamp: new Date()},
           {id: 1, customer_id: 1, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur feugiat justo. Sed bibendum pretium ligula. Quisque hendrerit pretium lobortis. Nunc erat enim, ultrices et ipsum vitae, semper volutpat magna.", important: false, timeStamp: new Date()},
-          {id: 1, customer_id: 1, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur feugiat justo. Sed bibendum pretium ligula. Quisque hendrerit pretium lobortis. Nunc erat enim, ultrices et ipsum vitae, semper volutpat magna.", important: false, timeStamp: new Date()},
+          {id: 1, customer_id: 1, message: "Morbi vitae quam tincidunt, eleifend diam vitae, commodo metus. Maecenas turpis enim, lacinia porta malesuada eget, sodales non libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur feugiat justo. Sed bibendum pretium ligula. Quisque hendrerit pretium lobortis. Nunc erat enim, ultrices et ipsum vitae, semper volutpat magna.", important: false, timeStamp: new Date()},
           {id: 1, customer_id: 2, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur feugiat justo. Sed bibendum pretium ligula. Quisque hendrerit pretium lobortis. Nunc erat enim, ultrices et ipsum vitae, semper volutpat magna.", important: false, timeStamp: new Date()},
-          {id: 1, customer_id: 3, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur feugiat justo. Sed bibendum pretium ligula. Quisque hendrerit pretium lobortis. Nunc erat enim, ultrices et ipsum vitae, semper volutpat magna.", important: true, timeStamp: new Date()},
+          {id: 1, customer_id: 3, message: "Morbi vitae quam tincidunt, eleifend diam vitae, commodo metus. Maecenas turpis enim, lacinia porta malesuada eget, sodales non libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur feugiat justo. Sed bibendum pretium ligula. Quisque hendrerit pretium lobortis. Nunc erat enim, ultrices et ipsum vitae, semper volutpat magna.", important: true, timeStamp: new Date()},
           {id: 1, customer_id: 1, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur feugiat justo. Sed bibendum pretium ligula. Quisque hendrerit pretium lobortis. Nunc erat enim, ultrices et ipsum vitae, semper volutpat magna.", important: false, timeStamp: new Date()},
           {id: 7, customer_id: 1, message: "Morbi vitae quam tincidunt, eleifend diam vitae, commodo metus. Maecenas turpis enim, lacinia porta malesuada eget, sodales non libero.", important: true, timeStamp: new Date()},
           {id: 8, customer_id: 2, message: "Morbi vitae quam tincidunt, eleifend diam vitae, commodo metus. Maecenas turpis enim, lacinia porta malesuada eget, sodales non libero.", important: false, timeStamp: new Date()},

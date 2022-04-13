@@ -6,7 +6,6 @@ import Customers from "@/pages/Customers.vue";
 import Customer from "@/pages/Customer.vue";
 import Icons from "@/pages/Icons.vue";
 import Maps from "@/pages/Maps.vue";
-import Notifications from "@/pages/Notifications.vue";
 
 const routes = [
   {
@@ -43,11 +42,6 @@ const routes = [
         path: "/maps",
         name: "Maps",
         component: Maps,
-      },
-      {
-        path: "/notifications",
-        name: "Notifications",
-        component: Notifications,
       },
     ],
   },

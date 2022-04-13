@@ -13,22 +13,24 @@
           <md-card-content id="customer-list">
             <div class="md-layout">
               <md-card class="customer md-layout-item md-xsmall-size-100 md-small-size-45 md-medium-size-45 md-large-size-45 md-size-45" v-for="(customer,index) in customers" :key="index">
-                <md-card-content>
-                  <div class="md-title">
-                    {{customer.name}}
-                  </div>
-                  <div class="status" >
-                    <span :class="customer.status.replace(' ', '-').toLowerCase()" >{{customer.status}}</span>
-                  </div>
-                  <div class="md-subhead">
-                    Last update to customer made on {{customer.lastUpdate}}
-                  </div>
-                </md-card-content>
-                <md-card-actions layout="row" md-alignment="right">
-                  <md-button :to="'/customer/' + customer.id">
-                    OPEN
-                  </md-button>
-                </md-card-actions>
+                <router-link :to="'/customer/' + customer.id">
+                  <md-card-content>
+                    <div class="md-title">
+                      {{customer.name}}
+                    </div>
+                    <div class="status" >
+                      <span :class="customer.status.replace(' ', '-').toLowerCase()" >{{customer.status}}</span>
+                    </div>
+                    <div class="md-subhead">
+                      Last update to customer made on {{customer.lastUpdate}}
+                    </div>
+                  </md-card-content>
+                  <md-card-actions layout="row" md-alignment="right">
+                    <md-button :to="'/customer/' + customer.id">
+                      OPEN
+                    </md-button>
+                  </md-card-actions>
+                </router-link>
               </md-card>
             </div>
           </md-card-content>
@@ -62,25 +64,26 @@
     margin:5px;
     text-align: left;
     font-weight: 500;
+    color:white;
     .good{
       padding:5px;
       border-radius:5px;
-      background-color: lawngreen !important;
+      background-color: #3DC13C !important;
     }
     .upset{
       padding:5px;
       border-radius:5px;
-      background-color: indianred !important;
+      background-color: #F13637 !important;
     }
     .waiting{
       padding:5px;
       border-radius:5px;
-      background-color: mediumspringgreen !important;
+      background-color: #F3BB1B !important;
     }
     .in-progress{
       padding:5px;
       border-radius:5px;
-      background-color: dodgerblue !important;
+      background-color: #3F66FB !important;
     }
   }
 </style>

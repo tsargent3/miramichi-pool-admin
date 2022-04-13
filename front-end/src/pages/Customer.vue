@@ -3,12 +3,12 @@
     <div class="md-layout">
       <div class="md-layout-item">
         <md-card>
-          <md-card-header data-background-color="grey">
+          <md-card-header data-background-color="blue">
             <h4 class="title">Currently Viewing: {{getCustomerById.name}}</h4>
             <p class="category">Below you can view/update the status of the customer.</p>
           </md-card-header>
           <md-card-actions  id="customer-list-button" md-alignment="left">
-            <md-button :to="'/customers/'" data-background-color="blue"> Back to Customer List</md-button>
+            <md-button :to="'/customers/'" data-background-color="grey"> Back to Customer List</md-button>
           </md-card-actions>
           <md-card-content id="customer">
             <div class="md-layout">
@@ -18,7 +18,15 @@
                     {{getCustomerById.name}}
                   </div>
                   <div class="status" >
-                    <span :class="getCustomerById.status.replace(' ', '-').toLowerCase()" >{{getCustomerById.status}}</span>
+                    <md-menu md-direction="bottom-middle" :mdCloseOnClick="closeOnClick" :mdCloseOnSelect="closeOnSelect">
+                      <md-button :class="status" md-menu-trigger>{{status}}<md-icon>arrow_drop_down</md-icon></md-button>
+                      <md-menu-content>
+                        <md-menu-item @click="status = 'good'"><p class="status-option">GOOD</p></md-menu-item>
+                        <md-menu-item @click="status = 'waiting'"><p class="status-option">WAITING</p></md-menu-item>
+                        <md-menu-item @click="status = 'in-progress'"><p class="status-option">IN PROGRESS</p></md-menu-item>
+                        <md-menu-item @click="status = 'upset'"><p class="status-option">UPSET</p></md-menu-item>
+                      </md-menu-content>
+                    </md-menu>
                   </div>
                   <md-card class="panel">
                     <h4 class="title">Customer Interactions</h4>
@@ -77,6 +85,18 @@
 </template>
 
 <style lang="scss" scoped>
+  .md-menu {
+    margin: 10px 0;
+  }
+  .md-menu-content{
+    margin-top:45px;
+  }
+  .status-option{
+    width:100%;
+    display: block;
+    text-align: center;
+    margin-bottom:0;
+  }
   #important-checkbox .md-checkbox {
     display: flex;
   }
@@ -93,26 +113,26 @@
   .status{
     margin:5px;
     text-align: left;
-    font-weight: 500;
     .good{
-      padding:5px;
       border-radius:5px;
-      background-color: lawngreen !important;
+      background-color: #3DC13C !important;
+      font-weight: 600;
     }
     .upset{
-      padding:5px;
       border-radius:5px;
-      background-color: indianred !important;
+      background-color: #F13637 !important;
+      font-weight: 600;
     }
     .waiting{
-      padding:5px;
+      padding:0;
       border-radius:5px;
-      background-color: mediumspringgreen !important;
+      background-color: #F3BB1B !important;
+      font-weight: 600;
     }
     .in-progress{
-      padding:5px;
       border-radius:5px;
-      background-color: dodgerblue !important;
+      background-color: #3F66FB !important;
+      font-weight: 600;
     }
   }
 
@@ -154,19 +174,15 @@ export default {
     },
   },
   data() {
-    return {
-      important: false,
-      active: false,
-      value: null,
-      customers: [
-        {id: 1, name: "John Doe", phone: "506-310-3030", address: "42 Wallaby Way, Sydney", status:"WAITING", lastUpdate:"Apr 11 @ 4:25 PM"},
-        {id: 2, name: "Jane Doe", phone: "506-310-3030", address: "42 Wallaby Way, Sydney", status:"GOOD", lastUpdate:"Apr 6 @ 4:15 PM"},
-        {id: 3, name: "Ben Jerry", phone: "506-310-3030", address: "42 Wallaby Way, Sydney", status:"IN PROGRESS", lastUpdate:"Apr 2 @ 10:25 AM"},
-        {id: 4, name: "Sue Loo", phone: "506-310-3030", address: "42 Wallaby Way, Sydney", status:"UPSET", lastUpdate:"Apr 12 @ 11:25 AM"},
-        {id: 5, name: "Billy Joe", phone: "506-310-3030", address: "42 Wallaby Way, Sydney", status:"GOOD", lastUpdate:"Apr 1 @ 1:02 PM"},
-        {id: 6, name: "Jimmy Jean", phone: "506-310-3030", address: "42 Wallaby Way, Sydney", status:"WAITING", lastUpdate:"Mar 4 @ 2:21 PM"},
-      ],
-      conversationLogs: [
+    let customerList = [
+        {id: 1, name: "John Doe", phone: "506-310-3030", address: "42 Wallaby Way, Sydney", status:"waiting", lastUpdate:"Apr 11 @ 4:25 PM"},
+        {id: 2, name: "Jane Doe", phone: "506-310-3030", address: "42 Wallaby Way, Sydney", status:"good", lastUpdate:"Apr 6 @ 4:15 PM"},
+        {id: 3, name: "Ben Jerry", phone: "506-310-3030", address: "42 Wallaby Way, Sydney", status:"in progress", lastUpdate:"Apr 2 @ 10:25 AM"},
+        {id: 4, name: "Sue Loo", phone: "506-310-3030", address: "42 Wallaby Way, Sydney", status:"upset", lastUpdate:"Apr 12 @ 11:25 AM"},
+        {id: 5, name: "Billy Joe", phone: "506-310-3030", address: "42 Wallaby Way, Sydney", status:"good", lastUpdate:"Apr 1 @ 1:02 PM"},
+        {id: 6, name: "Jimmy Jean", phone: "506-310-3030", address: "42 Wallaby Way, Sydney", status:"waiting", lastUpdate:"Mar 4 @ 2:21 PM"},
+        ];
+    let customerLogsList = [
           {id: 1, customer_id: 1, message: "Morbi vitae quam tincidunt, eleifend diam vitae, commodo metus. Maecenas turpis enim, lacinia porta malesuada eget, sodales non libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur feugiat justo. Sed bibendum pretium ligula. Quisque hendrerit pretium lobortis. Nunc erat enim, ultrices et ipsum vitae, semper volutpat magna.", important: false, timeStamp: new Date()},
           {id: 1, customer_id: 1, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur feugiat justo. Sed bibendum pretium ligula. Quisque hendrerit pretium lobortis. Nunc erat enim, ultrices et ipsum vitae, semper volutpat magna.", important: true, timeStamp: new Date()},
           {id: 1, customer_id: 1, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur feugiat justo. Sed bibendum pretium ligula. Quisque hendrerit pretium lobortis. Nunc erat enim, ultrices et ipsum vitae, semper volutpat magna.", important: false, timeStamp: new Date()},
@@ -182,7 +198,16 @@ export default {
           {id: 10, customer_id: 4, message: "Morbi vitae quam tincidunt, eleifend diam vitae, commodo metus. Maecenas turpis enim, lacinia porta malesuada eget, sodales non libero.", important: true, timeStamp: new Date()},
           {id: 11, customer_id: 5, message: "Morbi vitae quam tincidunt, eleifend diam vitae, commodo metus. Maecenas turpis enim, lacinia porta malesuada eget, sodales non libero.", important: false, timeStamp: new Date()},
           {id: 12, customer_id: 6, message: "Morbi vitae quam tincidunt, eleifend diam vitae, commodo metus. Maecenas turpis enim, lacinia porta malesuada eget, sodales non libero.", important: false, timeStamp: new Date()},
-      ],
+          ];
+    return {
+      status: customerList[this.$route.params.customer_id - 1].status,
+      closeOnClick: false,
+      closeOnSelect: true,
+      important: false,
+      active: false,
+      value: null,
+      customers: customerList,
+      conversationLogs: customerLogsList,
     };
   },
   computed: {

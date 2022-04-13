@@ -7,7 +7,7 @@
     line-height: 1.42857;
 
     font-size: $mdb-btn-font-size-base;
-    font-weight: 400;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0;
 
@@ -16,7 +16,8 @@
     background-color 0.2s $mdb-animation-curve-default;
 
     &:not(.md-just-icon):not(.md-btn-fab):not(.md-icon-button):not(.md-toolbar-toggle) .md-ripple{
-      padding: 12px 30px;
+      text-align: center;
+      padding: 6px 10px;
     }
 
     &:not(.md-just-icon) .md-button-content i{

@@ -15,28 +15,29 @@
     margin:5px;
     font-weight: 600;
     white-space: nowrap;
+    color: white;
     .good{
       padding:5px;
       border-radius:5px;
-      background-color: lawngreen !important;
+      background-color: #3DC13C !important;
       margin: 0 auto;
     }
     .upset{
       padding:5px;
       border-radius:5px;
-      background-color: indianred !important;
+      background-color: #F13637 !important;
       margin: 0 auto;
     }
     .waiting{
       padding:5px;
       border-radius:5px;
-      background-color: mediumspringgreen !important;
+      background-color: #F3BB1B !important;
       margin: 0 auto;
     }
     .in-progress{
       padding:5px;
       border-radius:5px;
-      background-color: dodgerblue !important;
+      background-color: #3F66FB !important;
       margin: 0 auto;
     }
   }

@@ -24,9 +24,10 @@
                     Last update to customer made on {{customer.lastUpdate}}
                   </div>
                 </md-card-content>
-                <md-card-actions layout="row" md-alignment="space-between">
-                  <md-button>Open</md-button>
-                  <md-button data-background-color="red">Delete</md-button>
+                <md-card-actions layout="row" md-alignment="right">
+                  <md-button :to="'/customer/' + customer.id">
+                    OPEN
+                  </md-button>
                 </md-card-actions>
               </md-card>
             </div>
@@ -95,12 +96,12 @@ export default {
   data() {
     return {
       customers: [
-        {name: "John Doe", status:"WAITING", lastUpdate:"Apr 11 @ 4:25 PM"},
-        {name: "Jane Doe", status:"GOOD", lastUpdate:"Apr 6 @ 4:15 PM"},
-        {name: "Ben Jerry", status:"IN PROGRESS", lastUpdate:"Apr 2 @ 10:25 AM"},
-        {name: "Sue Loo", status:"UPSET", lastUpdate:"Apr 12 @ 11:25 AM"},
-        {name: "Billy Joe", status:"GOOD", lastUpdate:"Apr 1 @ 1:02 PM"},
-        {name: "Jimmy Jean", status:"WAITING", lastUpdate:"Mar 4 @ 2:21 PM"},
+        {id: 1, name: "John Doe", status:"WAITING", lastUpdate:"Apr 11 @ 4:25 PM"},
+        {id: 2, name: "Jane Doe", status:"GOOD", lastUpdate:"Apr 6 @ 4:15 PM"},
+        {id: 3, name: "Ben Jerry", status:"IN PROGRESS", lastUpdate:"Apr 2 @ 10:25 AM"},
+        {id: 4, name: "Sue Loo", status:"UPSET", lastUpdate:"Apr 12 @ 11:25 AM"},
+        {id: 5, name: "Billy Joe", status:"GOOD", lastUpdate:"Apr 1 @ 1:02 PM"},
+        {id: 6, name: "Jimmy Jean", status:"WAITING", lastUpdate:"Mar 4 @ 2:21 PM"},
       ],
     };
   },

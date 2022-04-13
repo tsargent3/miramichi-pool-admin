@@ -3,6 +3,7 @@ import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
 import Dashboard from "@/pages/Dashboard.vue";
 import UserProfile from "@/pages/UserProfile.vue";
 import Customers from "@/pages/Customers.vue";
+import Customer from "@/pages/Customer.vue";
 import Icons from "@/pages/Icons.vue";
 import Maps from "@/pages/Maps.vue";
 import Notifications from "@/pages/Notifications.vue";
@@ -14,32 +15,37 @@ const routes = [
     redirect: "/dashboard",
     children: [
       {
-        path: "dashboard",
+        path: "/dashboard",
         name: "Dashboard",
         component: Dashboard,
       },
       {
-        path: "user",
+        path: "/user",
         name: "User Profile",
         component: UserProfile,
       },
       {
-        path: "customers",
+        path: "/customers",
         name: "Customers",
         component: Customers,
       },
       {
-        path: "icons",
+        path: "/customer/:customer_id",
+        name: "Customer View",
+        component: Customer,
+      },
+      {
+        path: "/icons",
         name: "Icons",
         component: Icons,
       },
       {
-        path: "maps",
+        path: "/maps",
         name: "Maps",
         component: Maps,
       },
       {
-        path: "notifications",
+        path: "/notifications",
         name: "Notifications",
         component: Notifications,
       },

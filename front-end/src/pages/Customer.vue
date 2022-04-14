@@ -4,7 +4,7 @@
       <div class="md-layout-item">
         <md-card>
           <md-card-header data-background-color="blue">
-            <h4 class="title">Currently Viewing: {{getCustomerById.name}}</h4>
+            <h4 class="title">Currently Viewing: {{getCustomerById.firstName}} {{getCustomerById.lastName}}</h4>
             <p class="category">Below you can view/update the status of the customer.</p>
           </md-card-header>
           <md-card-actions  id="customer-list-button" md-alignment="left">
@@ -15,7 +15,7 @@
               <md-card class="customer md-layout-item md-xsmall-size-100 md-small-size-100 md-medium-size-100 md-large-size-100 md-size-100">
                 <md-card-content id="main-panel">
                   <div class="md-title">
-                    {{getCustomerById.name}}
+                    {{getCustomerById.firstName}} {{getCustomerById.lastName}}
                   </div>
                   <div class="status" >
                     <md-menu md-direction="bottom-middle" :mdCloseOnClick="closeOnClick" :mdCloseOnSelect="closeOnSelect">
@@ -56,24 +56,62 @@
                   </md-card>
                   <md-card class="panel">
                     <h4 class="title">Customer Information</h4>
-                    <p>Name: {{getCustomerById.name}}</p>
+                    <p>Name: {{getCustomerById.firstName}} {{getCustomerById.lastName}}</p>
                     <p>Phone Number: {{getCustomerById.phone}}</p>
                     <p>Address: {{getCustomerById.address}}</p>
                     <md-card-actions layout="row" md-alignment="right">
-                      <md-button data-background-color="blue">Update </md-button>
+                      <md-dialog 
+                              :md-active.sync="updateActive"
+                              md-content="Modify the customer information and click 'Create'">
+                        <md-dialog-title>Update Customer</md-dialog-title>
+                        <md-card id="update-customer-card">
+                          <div style="display:flex;">
+                            <md-field class="name" required>
+                              <label>* First Name</label>
+                              <md-input v-model="getCustomerById.firstName" id="firstName"></md-input>
+                            </md-field>
+                            <md-field class="name" required>
+                              <label>* Last Name</label>
+                              <md-input v-model="getCustomerById.lastName" id="lastName"></md-input>
+                            </md-field>
+                          </div>
+                          <md-field>
+                            <label>Email</label>
+                            <md-input v-model="getCustomerById.email" id="email" :value="getCustomerById.email"></md-input>
+                          </md-field>
+                          <md-field>
+                            <label>Phone Number</label>
+                            <md-input v-model="getCustomerById.phone" id="phone" :value="getCustomerById.phone"></md-input>
+                          </md-field>
+                          <md-field>
+                            <label>Address</label>
+                            <md-input v-model="getCustomerById.address" id="address">{{getCustomerById.address}}</md-input>
+                          </md-field>
+                          <span class="md-caption">* = required field</span>
+                          <md-card-actions layout="row" md-alignment="space-between">
+                              <md-button @click="updateActive = false;">
+                                CANCEL
+                              </md-button>
+                              <md-button class="md-primary" @click="updateActive = false;">
+                                UPDATE
+                              </md-button>
+                            </md-card-actions>
+                        </md-card>
+                      </md-dialog>
+                      <md-button @click="updateActive = true" data-background-color="blue">Update</md-button>
                     </md-card-actions>
                   </md-card>
                 </md-card-content>
                 <md-card-actions layout="row" md-alignment="right">
                   <md-dialog-confirm 
-                    :md-active.sync="active"
+                    :md-active.sync="deleteActive"
                     :md-title="'Delete customer ' + getCustomerById.name + '?'"
                     md-content="Are you sure you want to delete this customer? This action is final and cannot be reverted."
                     md-confirm-text="Delete"
                     md-cancel-text="Cancel"
                     @md-cancel="onCancel"
                     @md-confirm="onConfirm"/>
-                  <md-button data-background-color="red" @click="active = true">Delete Customer</md-button>
+                  <md-button data-background-color="red" @click="deleteActive = true">Delete Customer</md-button>
                 </md-card-actions>
               </md-card>
             </div>
@@ -85,6 +123,39 @@
 </template>
 
 <style lang="scss" scoped>
+
+  .md-field::v-deep {
+    margin: 5px 4px 8px 4px;
+  }
+  .md-field::v-deep label{
+    font-size: 0.7rem;
+  }
+  .md-dialog::v-deep .md-dialog-title{
+    padding-top: 10px;
+    margin-bottom: 6px;
+  }
+  .md-dialog::v-deep .md-dialog-container {
+    text-align: center;
+    min-width: 340px;
+    width: 50vw;
+    padding: 5px 20px;
+    max-width: 600px;
+    max-height: 80%;
+    height:unset;
+    border-radius:2px;
+    transform:unset;
+    margin: 100px;
+  }
+  #update-customer-card{
+    position:relative;
+    margin: 10px auto;
+    padding:5px 20px;
+    .name{
+      position:relative;
+      min-width:50%;
+      width: 50%;
+    }
+  }
   .md-menu {
     margin: 10px 0;
   }
@@ -175,12 +246,12 @@ export default {
   },
   data() {
     let customerList = [
-        {id: 1, name: "John Doe", phone: "506-310-3030", address: "42 Wallaby Way, Sydney", status:"waiting", lastUpdate:"Apr 11 @ 4:25 PM"},
-        {id: 2, name: "Jane Doe", phone: "506-310-3030", address: "42 Wallaby Way, Sydney", status:"good", lastUpdate:"Apr 6 @ 4:15 PM"},
-        {id: 3, name: "Ben Jerry", phone: "506-310-3030", address: "42 Wallaby Way, Sydney", status:"in progress", lastUpdate:"Apr 2 @ 10:25 AM"},
-        {id: 4, name: "Sue Loo", phone: "506-310-3030", address: "42 Wallaby Way, Sydney", status:"upset", lastUpdate:"Apr 12 @ 11:25 AM"},
-        {id: 5, name: "Billy Joe", phone: "506-310-3030", address: "42 Wallaby Way, Sydney", status:"good", lastUpdate:"Apr 1 @ 1:02 PM"},
-        {id: 6, name: "Jimmy Jean", phone: "506-310-3030", address: "42 Wallaby Way, Sydney", status:"waiting", lastUpdate:"Mar 4 @ 2:21 PM"},
+        {id: 1, firstName: "John", lastName: "Doe", phone: "506-310-3030", email:"example@miramichipool.com", address: "42 Wallaby Way, Sydney", status:"waiting", lastUpdate:"Apr 11 @ 4:25 PM"},
+        {id: 2, firstName: "Jane", lastName: "Doe", phone: "506-310-3030", email:"example@miramichipool.com", address: "42 Wallaby Way, Sydney", status:"good", lastUpdate:"Apr 6 @ 4:15 PM"},
+        {id: 3, firstName: "Ben", lastName: "Jerry", phone: "506-310-3030", email:"example@miramichipool.com", address: "42 Wallaby Way, Sydney", status:"in progress", lastUpdate:"Apr 2 @ 10:25 AM"},
+        {id: 4, firstName: "Sue", lastName: "Loo", phone: "506-310-3030", email:"example@miramichipool.com", address: "42 Wallaby Way, Sydney", status:"upset", lastUpdate:"Apr 12 @ 11:25 AM"},
+        {id: 5, firstName: "Billy", lastName: "Joe", phone: "506-310-3030", email:"example@miramichipool.com", address: "42 Wallaby Way, Sydney", status:"good", lastUpdate:"Apr 1 @ 1:02 PM"},
+        {id: 6, firstName: "Jimmy", lastName: "Jean", phone: "506-310-3030", email:"example@miramichipool.com", address: "42 Wallaby Way, Sydney", status:"waiting", lastUpdate:"Mar 4 @ 2:21 PM"},
         ];
     let customerLogsList = [
           {id: 1, customer_id: 1, message: "Morbi vitae quam tincidunt, eleifend diam vitae, commodo metus. Maecenas turpis enim, lacinia porta malesuada eget, sodales non libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur feugiat justo. Sed bibendum pretium ligula. Quisque hendrerit pretium lobortis. Nunc erat enim, ultrices et ipsum vitae, semper volutpat magna.", important: false, timeStamp: new Date()},
@@ -204,7 +275,8 @@ export default {
       closeOnClick: false,
       closeOnSelect: true,
       important: false,
-      active: false,
+      deleteActive: false,
+      updateActive: false,
       value: null,
       customers: customerList,
       conversationLogs: customerLogsList,

@@ -17,6 +17,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import App from "./App";
+import store from "./store";
 
 // router setup
 import routes from "./routes/routes";
@@ -50,6 +51,7 @@ new Vue({
   el: "#app",
   render: (h) => h(App),
   router,
+  store,
   data: {
     Chartist: Chartist,
   },

@@ -59,6 +59,7 @@
                     <p>Name: {{getCustomerById.firstName}} {{getCustomerById.lastName}}</p>
                     <p>Phone Number: {{getCustomerById.phone}}</p>
                     <p>Address: {{getCustomerById.address}}</p>
+                    <p>Postal Code: {{getCustomerById.postalCode}}</p>
                     <md-card-actions layout="row" md-alignment="right">
                       <md-dialog 
                               :md-active.sync="updateActive"
@@ -86,6 +87,10 @@
                           <md-field>
                             <label>Address</label>
                             <md-input v-model="getCustomerById.address" id="address">{{getCustomerById.address}}</md-input>
+                          </md-field>
+                          <md-field>
+                            <label>Postal Code</label>
+                            <md-input v-model="getCustomerById.postalCode" id="postalCode">{{getCustomerById.postalCode}}</md-input>
                           </md-field>
                           <span class="md-caption">* = required field</span>
                           <md-card-actions layout="row" md-alignment="space-between">
@@ -172,13 +177,14 @@
     display: flex;
   }
   #customer-list-button{
-    margin-top:20px;
+    margin-top:10px;
     margin-bottom:0px;
     padding:0;
     border-top:0;
   }
   .md-card .customer {
     margin: 10px auto;
+    margin-top:0px;
     padding: 0 5px;
   }
   .status{
@@ -208,7 +214,7 @@
   }
 
   #main-panel{
-    padding: 15px 5px;
+    padding: 10px 5px;
   }
 
   .panel{
@@ -246,12 +252,12 @@ export default {
   },
   data() {
     let customerList = [
-        {id: 1, firstName: "John", lastName: "Doe", phone: "506-310-3030", email:"example@miramichipool.com", address: "42 Wallaby Way, Sydney", status:"waiting", lastUpdate:"Apr 11 @ 4:25 PM"},
-        {id: 2, firstName: "Jane", lastName: "Doe", phone: "506-310-3030", email:"example@miramichipool.com", address: "42 Wallaby Way, Sydney", status:"good", lastUpdate:"Apr 6 @ 4:15 PM"},
-        {id: 3, firstName: "Ben", lastName: "Jerry", phone: "506-310-3030", email:"example@miramichipool.com", address: "42 Wallaby Way, Sydney", status:"in progress", lastUpdate:"Apr 2 @ 10:25 AM"},
-        {id: 4, firstName: "Sue", lastName: "Loo", phone: "506-310-3030", email:"example@miramichipool.com", address: "42 Wallaby Way, Sydney", status:"upset", lastUpdate:"Apr 12 @ 11:25 AM"},
-        {id: 5, firstName: "Billy", lastName: "Joe", phone: "506-310-3030", email:"example@miramichipool.com", address: "42 Wallaby Way, Sydney", status:"good", lastUpdate:"Apr 1 @ 1:02 PM"},
-        {id: 6, firstName: "Jimmy", lastName: "Jean", phone: "506-310-3030", email:"example@miramichipool.com", address: "42 Wallaby Way, Sydney", status:"waiting", lastUpdate:"Mar 4 @ 2:21 PM"},
+        {id: 1, firstName: "John", lastName: "Doe", phone: "506-310-3030", email:"example@miramichipool.com", address: "42 Wallaby Way, Sydney", postalCode: "E1N 3V4", status:"waiting", lastUpdate:"Apr 11 @ 4:25 PM"},
+        {id: 2, firstName: "Jane", lastName: "Doe", phone: "506-310-3030", email:"example@miramichipool.com", address: "42 Wallaby Way, Sydney", postalCode: "E1N 3V4", status:"good", lastUpdate:"Apr 6 @ 4:15 PM"},
+        {id: 3, firstName: "Ben", lastName: "Jerry", phone: "506-310-3030", email:"example@miramichipool.com", address: "42 Wallaby Way, Sydney", postalCode: "E1N 3V4", status:"in progress", lastUpdate:"Apr 2 @ 10:25 AM"},
+        {id: 4, firstName: "Sue", lastName: "Loo", phone: "506-310-3030", email:"example@miramichipool.com", address: "42 Wallaby Way, Sydney", postalCode: "E1N 3V4", status:"upset", lastUpdate:"Apr 12 @ 11:25 AM"},
+        {id: 5, firstName: "Billy", lastName: "Joe", phone: "506-310-3030", email:"example@miramichipool.com", address: "42 Wallaby Way, Sydney", postalCode: "E1N 3V4", status:"good", lastUpdate:"Apr 1 @ 1:02 PM"},
+        {id: 6, firstName: "Jimmy", lastName: "Jean", phone: "506-310-3030", email:"example@miramichipool.com", address: "42 Wallaby Way, Sydney", postalCode: "E1N 3V4", status:"waiting", lastUpdate:"Mar 4 @ 2:21 PM"},
         ];
     let customerLogsList = [
           {id: 1, customer_id: 1, message: "Morbi vitae quam tincidunt, eleifend diam vitae, commodo metus. Maecenas turpis enim, lacinia porta malesuada eget, sodales non libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur feugiat justo. Sed bibendum pretium ligula. Quisque hendrerit pretium lobortis. Nunc erat enim, ultrices et ipsum vitae, semper volutpat magna.", important: false, timeStamp: new Date()},

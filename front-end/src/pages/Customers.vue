@@ -50,7 +50,7 @@
           </md-card-actions>
           <md-card-content id="customer-list">
             <div class="md-layout">
-              <md-card class="customer md-layout-item md-xsmall-size-100 md-small-size-45 md-medium-size-45 md-large-size-45 md-size-45" v-for="(customer,index) in customers" :key="index">
+              <md-card class="customer md-layout-item md-xsmall-size-100 md-small-size-45 md-medium-size-45 md-large-size-45 md-size-45 m-sm-1" v-for="(customer,index) in customers" :key="index">
                 <router-link :to="'/customer/' + customer.id">
                   <md-card-content>
                     <div class="md-title">
@@ -107,6 +107,11 @@
     transform:unset;
     margin: 100px;
   }
+
+  .md-card::v-deep .md-card-content{
+    padding: 15px 5px;
+  }
+
   #new-customer-card{
     position:relative;
     margin: 10px auto;

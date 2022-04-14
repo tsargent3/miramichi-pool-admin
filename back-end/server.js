@@ -28,7 +28,7 @@ db.mongoose
 app.get('/', function (req,res) {
   res.sendFile(path + "index.html");
 });
-require("./app/routes/users.routes")(app);
+require("./app/routes/user.routes")(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {

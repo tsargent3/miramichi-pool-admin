@@ -5,7 +5,7 @@ const path = __dirname + '/app/views/';
 const app = express();
 app.use(express.static(path));
 var corsOptions = {
-  origin: "http://localhost:4001"
+  origin: "https://localhost:4001"
 };
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
@@ -28,6 +28,7 @@ db.mongoose
 app.get('/', function (req,res) {
   res.sendFile(path + "index.html");
 });
+require("./app/routes/users.routes")(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {

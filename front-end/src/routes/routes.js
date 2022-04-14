@@ -4,13 +4,19 @@ import Dashboard from "@/pages/Dashboard.vue";
 import UserProfile from "@/pages/UserProfile.vue";
 import Customers from "@/pages/Customers.vue";
 import Customer from "@/pages/Customer.vue";
+import Login from "@/pages/Login.vue";
 
 const routes = [
   {
     path: "/",
     component: DashboardLayout,
-    redirect: "/dashboard",
+    redirect: "/login",
     children: [
+      {
+        path: "/login",
+        name: "Login",
+        component: Login,
+      },
       {
         path: "/dashboard",
         name: "Dashboard",

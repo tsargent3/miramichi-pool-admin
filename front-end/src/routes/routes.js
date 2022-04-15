@@ -5,6 +5,7 @@ import UserProfile from "@/pages/UserProfile.vue";
 import Customers from "@/pages/Customers.vue";
 import Customer from "@/pages/Customer.vue";
 import Login from "@/pages/Login.vue";
+import Register from "@/pages/Register.vue";
 
 const routes = [
   {
@@ -16,6 +17,11 @@ const routes = [
         path: "/login",
         name: "Login",
         component: Login,
+      },
+      {
+        path: "/register",
+        name: "Register",
+        component: Register,
       },
       {
         path: "/dashboard",

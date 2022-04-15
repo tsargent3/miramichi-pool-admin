@@ -1,10 +1,13 @@
 import http from "../http-common";
 class AuthDataService {
-  async login(creds) {
-    return http.post("/login/");
+  login(creds) {
+    return http.post("/login", creds);
+  }
+  register(creds) {
+    return http.post("/login/register", creds);
   }
   logout() {
-    return http.post(`/logout/`);
+    return http.post(`/logout`);
   }
 }
 export default new AuthDataService();

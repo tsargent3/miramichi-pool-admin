@@ -4,4 +4,7 @@ mongoose.Promise = global.Promise;
 const db = {};
 db.mongoose = mongoose;
 db.url = dbConfig.url;
+db.users = require("./user.model.js")(mongoose);
+db.roles = require("./role.model.js")(mongoose);
+db.ROLES = ["user", "admin", "moderator"];
 module.exports = db;

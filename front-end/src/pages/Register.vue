@@ -23,7 +23,7 @@
         <md-input v-model="creds.password" id="password" type=password></md-input>
       </md-field>
       <md-card-actions layout="row" md-alignment="right">
-        <md-button data-background-color="blue" type="submit" @click="registerUser">Register</md-button>
+        <md-button data-background-color="blue" type="submit" @click="handleRegister">Register</md-button>
       </md-card-actions>
     </md-card-content>
   </md-card>
@@ -46,37 +46,51 @@
 </style>
 
 <script>
-import AuthDataService from "../services/AuthDataService";
 export default {
-  data: () => {
+  name: 'Register',
+  data() {
     return {
       creds:{
         username: "",
-        firstName: "",
-        lastName: "",
-        email: "",
         password: "",
-      }
+      },
+      submitted: false,
+      successful: false,
+      message: ''
     };
   },
-  methods: {
-    async registerUser() {
-      try{
-        const response = await AuthDataService.register(this.creds);
-        console.log(response);
-        let token = response.data.token;
-        if (token) {
-            localStorage.setItem("jwt", token);
-            console.log("Successful login");
-            this.$router.push("/");
-        } else {
-            console.log("Something went wrong");
-        }
-      } catch (err) {
-        let error = err.response;
-        console.log("Error: " + error.data.message);
-      }
-    },
+  computed: {
+    loggedIn() {
+      return this.$store.state.auth.status.loggedIn;
+    }
   },
+  mounted() {
+    if (this.loggedIn) {
+      this.$router.push('/profile');
+    }
+  },
+  methods: {
+    handleRegister() {
+      this.message = '';
+      this.submitted = true;
+      this.$validator.validate().then(isValid => {
+        if (isValid) {
+          this.$store.dispatch('auth/register', this.creds).then(
+            data => {
+              this.message = data.message;
+              this.successful = true;
+            },
+            error => {
+              this.message =
+                (error.response && error.response.data) ||
+                error.message ||
+                error.toString();
+              this.successful = false;
+            }
+          );
+        }
+      });
+    }
+  }
 };
 </script>

@@ -1,17 +1,16 @@
 const express = require("express");
-const bodyParser = require("body-parser");
+require('dotenv').config()
 const cors = require("cors");
-const path = __dirname + '/app/views/';
 const app = express();
-app.use(express.static(path));
 var corsOptions = {
 	origin: "https://admin.miramichipool.com"
 };
 app.use(cors(corsOptions));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const db = require("./app/models");
+const Role = db.roles;
 db.mongoose
   .connect(db.url, {
     useNewUrlParser: true,
@@ -19,13 +18,13 @@ db.mongoose
   })
   .then(() => {
     console.log("Connected to the database!");
+    initial();
   })
   .catch(err => {
     console.log("Cannot connect to the database!", err);
     process.exit();
   });
   
-const Role = db.roles;
 function initial() {
   Role.estimatedDocumentCount((err, count) => {
     if (!err && count === 0) {
@@ -61,9 +60,6 @@ function initial() {
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 
-app.get('/', function (req,res) {
-  res.sendFile(path + "index.html");
-});
 // set port, listen for requests
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

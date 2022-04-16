@@ -31,8 +31,8 @@
                   <md-card class="panel">
                     <h4 class="title">Customer Interactions</h4>
                     <md-card-content class="panel-content">
-                      <template v-for="(logMessage, index) in getCustomerLogsById">
-                        <md-card class="log-message" :key="index">
+                      <template v-for="(logMessage, index) in getCustomerLogsById" :key="index">
+                        <md-card class="log-message">
                           <md-card-header class="timestamp" :data-background-color="logMessage.important ? 'red' : 'grey'">
                             <p class="title">{{logMessage.timeStamp.toLocaleString("en-US")}}</p>
                           </md-card-header>
@@ -129,17 +129,17 @@
 
 <style lang="scss" scoped>
 
-  .md-field::v-deep {
+  .md-field:deep() {
     margin: 5px 4px 8px 4px;
   }
-  .md-field::v-deep label{
+  .md-field:deep(label){
     font-size: 0.7rem;
   }
-  .md-dialog::v-deep .md-dialog-title{
+  .md-dialog:deep(.md-dialog-title){
     padding-top: 10px;
     margin-bottom: 6px;
   }
-  .md-dialog::v-deep .md-dialog-container {
+  .md-dialog:deep(.md-dialog-container) {
     text-align: center;
     min-width: 340px;
     width: 50vw;

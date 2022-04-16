@@ -85,17 +85,17 @@
     padding:0;
     border-top:0;
   }
-  .md-field::v-deep {
+  .md-field:deep() {
     margin: 5px 4px 8px 4px;
   }
-  .md-field::v-deep label{
+  .md-field:deep(label){
     font-size: 0.7rem;
   }
-  .md-dialog::v-deep .md-dialog-title{
+  .md-dialog:deep(.md-dialog-title){
     padding-top: 10px;
     margin-bottom: 6px;
   }
-  .md-dialog::v-deep .md-dialog-container {
+  .md-dialog:deep(.md-dialog-container) {
     text-align: center;
     min-width: 340px;
     width: 50vw;
@@ -108,7 +108,7 @@
     margin: 100px;
   }
 
-  .md-card::v-deep .md-card-content{
+  .md-card:deep(.md-card-content){
     padding: 15px 5px;
   }
 

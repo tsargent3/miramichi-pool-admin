@@ -8,11 +8,11 @@ var bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
   const user = new User({
-    username: req.body.creds.username,
-    firstName: req.body.creds.firstName,
-    lastName: req.body.creds.lastName,
-    email: req.body.creds.email,
-    password: bcrypt.hashSync(req.body.creds.password, 8),
+    username: req.body.username,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    password: bcrypt.hashSync(req.body.password, 8),
   });
 
   user.save((err, user) => {
@@ -66,7 +66,7 @@ exports.signup = (req, res) => {
 
 exports.signin = (req, res) => {
   User.findOne({
-    username: req.body.creds.username
+    username: req.body.username
   })
     .populate("roles", "-__v")
     .exec((err, user) => {
@@ -80,7 +80,7 @@ exports.signin = (req, res) => {
       }
 
       var passwordIsValid = bcrypt.compareSync(
-        req.body.creds.password,
+        req.body.password,
         user.password
       );
 
@@ -106,6 +106,57 @@ exports.signin = (req, res) => {
         email: user.email,
         roles: authorities,
         accessToken: token
+      });
+    });
+};
+
+exports.changePass = (req, res) => {
+  User.findOne({
+    username: req.body.username
+  })
+    .exec((err, user) => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }
+
+      if (!user) {
+        return res.status(404).send({ message: "User not found." });
+      }
+      user.password = bcrypt.hashSync(req.body.password, 8);
+      user.save(err => {
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }
+
+        res.send({message: "Password changed successfully."});
+      });
+    });
+};
+
+exports.changeUsernameEmail = (req, res) => {
+  User.findOne({
+    username: req.body.currentUsername
+  })
+    .exec((err, user) => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }
+
+      if (!user) {
+        return res.status(404).send({ message: "User not found." });
+      }
+      user.username = req.body.username;
+      user.email = req.body.email;
+      user.save(err => {
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }
+
+        res.send({message: "Username/email changed successfully."});
       });
     });
 };

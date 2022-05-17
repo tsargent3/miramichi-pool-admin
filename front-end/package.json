@@ -1,43 +1,58 @@
 {
-  "name": "vue-material-dashboard",
-  "version": "1.5.0",
+  "name": "front-end",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --port 5001",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
+    "serve": "npx vue-cli-service serve --port 5001",
+    "build": "npx vue-cli-service build",
+    "lint": "npx vue-cli-service lint",
     "dev": "npm run serve"
   },
   "dependencies": {
-    "@vue/cli": "^5.0.4",
-    "@vue/compat": "^3.1.0-0",
-    "axios": "^0.26.1",
-    "chartist": "0.11.4",
-    "core-js": "3.21.1",
-    "google-maps": "4.3.3",
+    "@kyvg/vue3-notification": "^2.3.4",
+    "@mdi/font": "5.9.55",
+    "@vue/cli": "^5.0.3",
+    "axios": "^0.27.2",
+    "core-js": "^3.8.3",
+    "roboto-fontface": "*",
     "vee-validate": "^4.5.11",
-    "vue": "^3.1.0-0",
-    "vue-clickaway": "2.2.2",
-    "vue-github-buttons": "3.1.0",
-    "vue-material": "1.0.0-beta-15",
-    "vue-router": "3.5.2",
-    "vue-social-sharing": "3.0.9",
-    "vuex": "^4.0.2"
+    "vue": "^3.2.31",
+    "vue-router": "^4.0.13",
+    "vuetify": "^3.0.0-beta.0",
+    "vuex": "^4.0.2",
+    "webfontloader": "^1.0.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~5.0.4",
-    "@vue/cli-plugin-eslint": "~5.0.4",
-    "@vue/cli-plugin-router": "~5.0.4",
-    "@vue/cli-service": "~5.0.4",
-    "@vue/compiler-sfc": "^3.1.0-0",
-    "@vue/eslint-config-prettier": "6.0.0",
-    "babel-eslint": "10.1.0",
-    "es6-promise": "4.2.8",
-    "eslint": "7.32.0",
-    "eslint-plugin-prettier": "4.0.0",
-    "eslint-plugin-vue": "7.20.0",
-    "prettier": "2.6.0",
-    "sass": "1.49.9",
-    "sass-loader": "10.2.1"
-  }
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "sass": "^1.38.0",
+    "sass-loader": "^10.0.0",
+    "vue-cli-plugin-vuetify": "~2.4.8",
+    "vuetify-loader": "^2.0.0-alpha.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
 }

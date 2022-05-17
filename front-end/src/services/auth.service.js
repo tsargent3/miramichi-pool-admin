@@ -1,4 +1,5 @@
 import axios from 'axios';
+import authHeader from './auth.header';
 const API_URL = 'https://api.miramichipool.com/api/auth/';
 class AuthService {
   login(creds) {
@@ -25,6 +26,29 @@ class AuthService {
       email: creds.email,
       password: creds.password
     });
+  }
+  changePass(creds) {
+    return axios.post(API_URL + 'change-pass',
+      {
+        username: creds.username,
+        password: creds.password
+      },
+      {
+        headers: authHeader()
+      }
+      );
+  }
+  changeUsernameEmail(creds) {
+    return axios.post(API_URL + 'change-username-email',
+      {
+        currentUsername: creds.currentUsername,
+        username: creds.username,
+        email: creds.email
+      },
+      {
+        headers: authHeader()
+      }
+      );
   }
 }
 export default new AuthService();
